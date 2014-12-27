@@ -10,8 +10,8 @@
     <script src="../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="../polymer/polymer.html">
     <link rel="import" href="../core-ajax/core-ajax.html">
-    <link rel="import" href="../muso-post-list/muso-post-list.html">
-    <link rel="import" href="../muso-post/muso-post.html">
+    <link rel="import" href="../muso-card-list/muso-card-list.html">
+    <link rel="import" href="../muso-card/muso-card.html">
     <style>
       x-demo {
         height: 500px;
@@ -33,11 +33,11 @@
         handleas="json"
         on-core-response="{{handleResponse}}"></core-ajax>
 
-        <muso-post-list data="{{posts}}" flex>
+        <muso-card-list data="{{card}}" flex>
           <template>
-            <muso-post post={{model}} flex></muso-post>
+            <muso-card card={{model}} flex></muso-card>
           </template>
-        </muso-post-list>
+        </muso-card-list>
 
       </template>
       <script>
@@ -46,7 +46,7 @@
 
           },
           handleResponse: function(event, detail, sender){
-            this.posts = detail.response;
+            this.card = detail.response;
           }
         });
       </script>
