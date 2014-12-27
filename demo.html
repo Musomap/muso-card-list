@@ -1,26 +1,57 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Demo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <script src="../webcomponentsjs/webcomponents.js"></script>
-  <link rel="import" href="../core-ajax/core-ajax.html">
-  <link rel="import" href="muso-post-list.html">
+  <head>
+    <title>Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script src="../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../polymer/polymer.html">
+    <link rel="import" href="../core-ajax/core-ajax.html">
+    <link rel="import" href="../muso-post-list/muso-post-list.html">
+    <link rel="import" href="../muso-post/muso-post.html">
+    <style>
+      x-demo {
+        height: 500px;
+      }
+    </style>
   </head>
-  <body unresolved="">
-    <core-ajax id="ajax" url="sample.json" auto handleas="json" response="{{sample}}"></core-ajax>
-    <template is="auto-binding">
-      <muso-post-list posts="{{posts}}"></muso-post-list>
-    </template>
-    <script>
-      var template = document.querySelector('template');
-      var ajax = document.querySelector('core-ajax');
-      ajax.addEventListener('core-response', function(e) {
-        template.posts = e.detail.response;
-      });
-    </script>
+  <body unresolved fit>
+
+    <h2>x-demo</h2>
+
+    <x-demo></x-demo>
+
+    <polymer-element name="x-demo" layout vertical>
+      <template>
+        <core-ajax
+        id="ajax"
+        url="sample.json"
+        auto
+        handleas="json"
+        on-core-response="{{handleResponse}}"></core-ajax>
+
+        <muso-post-list data="{{posts}}" flex>
+          <template>
+            <muso-post post={{model}} flex></muso-post>
+          </template>
+        </muso-post-list>
+
+      </template>
+      <script>
+        Polymer('x-demo', {
+          created: function(){
+
+          },
+          handleResponse: function(event, detail, sender){
+            this.posts = detail.response;
+          }
+        });
+      </script>
+    </polymer-element>
+
+
   </body>
 </html>
