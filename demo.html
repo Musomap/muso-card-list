@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="../core-ajax/core-ajax.html">
+  <link rel="import" href="muso-post-list.html">
+  </head>
+  <body unresolved="">
+    <core-ajax id="ajax" url="sample.json" auto handleas="json" response="{{sample}}"></core-ajax>
+    <template is="auto-binding">
+      <muso-post-list posts="{{posts}}"></muso-post-list>
+    </template>
+    <script>
+      var template = document.querySelector('template');
+      var ajax = document.querySelector('core-ajax');
+      ajax.addEventListener('core-response', function(e) {
+        template.posts = e.detail.response;
+      });
+    </script>
+  </body>
+</html>

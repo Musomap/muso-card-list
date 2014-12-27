@@ -1,0 +1,26 @@
+<link rel="import" href="../muso-post/muso-post.html">
+<polymer-element name="muso-post-list" attributes="posts">
+  <template>
+
+    <style>
+      :host{
+        margin: 10px;
+        padding: 10px;
+        display: block;
+        border: 1px solid gray;
+      }
+    </style>
+
+    <template repeat="{{post in posts}}">
+      <muso-post post="{{post}}"></muso-post>
+    </template>
+
+  </template>
+  <script>
+    Polymer('muso-post-list', {
+      created: function() {
+        this.posts = [];
+      }
+    });
+  </script>
+</polymer-element>
