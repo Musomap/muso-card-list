@@ -1,6 +1,32 @@
+<link rel="import" href="../core-ajax/core-ajax.html">
 <link rel="import" href="../core-list/core-list.html">
-<polymer-element name="muso-card-list" extends="core-list">
-  <script>
-    Polymer('muso-card-list', {});
-  </script>
+<link rel="import" href="../muso-card/muso-card.html">
+
+<polymer-element name="muso-card-list">
+	<template>
+		<link rel="stylesheet" href="muso-card-list.css" shim-shadowdom>
+
+		<core-ajax
+			id="ajax"
+			url="/cards"
+			auto
+			handleas="json"
+			on-core-response="{{handleResponse}}"></core-ajax>
+
+		<core-list class="list" data="{{cards}}" flex>
+			<template>
+				<muso-card card={{model}} flex></muso-card>
+			</template>
+		</core-list>
+
+	</template>
+	<script>
+		Polymer('muso-card-list', {
+
+			handleResponse: function(event, detail, sender){
+				this.cards = detail.response;
+			}
+
+		});
+	</script>
 </polymer-element>

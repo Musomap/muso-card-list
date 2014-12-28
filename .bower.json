@@ -1,13 +1,13 @@
 {
   "name": "muso-post-list",
   "homepage": "https://github.com/Musomap/muso-post-list",
-  "_release": "90c0a71f20",
+  "_release": "8d9a3764f7",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "90c0a71f203a530ec2ab8f830c79fb32bc66d112"
+    "commit": "8d9a3764f7be33d6e8b519e384e42cd19248aa47"
   },
-  "_source": "https://github.com/Musomap/muso-post-list.git",
+  "_source": "https://github.com/Musomap/muso-card-list.git",
   "_target": "*",
-  "_originalSource": "https://github.com/Musomap/muso-post-list.git"
+  "_originalSource": "https://github.com/Musomap/muso-card-list.git"
 }
